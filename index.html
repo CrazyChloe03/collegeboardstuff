@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Search</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #result-container {
+            display: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Text Search</h1>
+
+    <input type="text" id="searchInput" placeholder="Search for text">
+    <button onclick="searchText()">Search</button>
+
+    <div id="result-container">
+        <h2>Results</h2>
+        <ul id="resultsList"></ul>
+    </div>
+
+    <div id="text-container">
+        <h2>Selected Text</h2>
+        <p id="selectedText"></p>
+    </div>
+
+    <script>
+        // Function to fetch data asynchronously
+        async function fetchData() {
+            const response = await fetch('data.json');
+            const data = await response.json();
+            return data;
+        }
+
+        // Function to initialize the data
+        async function init() {
+            window.textData = await fetchData();
+        }
+
+        // Call the init function to fetch data
+        init();
+
+        function searchText() {
+            const searchInput = document.getElementById("searchInput").value.toLowerCase();
+            const resultsList = document.getElementById("resultsList");
+            const selectedText = document.getElementById("selectedText");
+            const resultContainer = document.getElementById("result-container");
+
+            resultsList.innerHTML = "";
+
+            const matches = window.textData.filter(item => item.text.toLowerCase().includes(searchInput));
+
+            if (matches.length > 0) {
+                matches.forEach(match => {
+                    const listItem = document.createElement("li");
+                    listItem.textContent = match.text;
+                    listItem.onclick = () => displayText(match.text);
+                    resultsList.appendChild(listItem);
+                });
+                resultContainer.style.display = "block";
+            } else {
+                resultContainer.style.display = "none";
+                alert("Sorry, not stored in the database.");
+            }
+        }
+
+        function displayText(text) {
+            const selectedText = document.getElementById("selectedText");
+            selectedText.textContent = text;
+        }
+    </script>
+
+</body>
+</html>
