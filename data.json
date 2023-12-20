@@ -1,0 +1,6 @@
+[
+    { "id": 1, "text": "Sample Text 1" },
+    { "id": 2, "text": "Sample Text 2" },
+    { "id": 3, "text": "Sample Text 3" }
+    // Add more data as needed
+]
