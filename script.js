@@ -1,4 +1,18 @@
-let data = [];
+const data = [
+    {
+        id: 1,
+        name: "John Doe",
+        age: 25,
+        occupation: "Engineer"
+    },
+    {
+        id: 2,
+        name: "Jane Smith",
+        age: 30,
+        occupation: "Designer"
+    },
+    // Add more data as needed
+];
 
 function search() {
     const searchInput = document.getElementById("searchInput").value.toLowerCase();
@@ -26,44 +40,5 @@ function search() {
 
 function showDetails(item) {
     const detailsDiv = document.getElementById("details");
-    const pictureElement = document.getElementById("picture");
-    const detailsInfoElement = document.getElementById("detailsInfo");
-
-    // Display user picture
-    pictureElement.src = item.picture;
-
-    // Display user details
-    detailsInfoElement.innerHTML = `<p>ID: ${item.id}</p><p>Name: ${item.name}</p><p>Age: ${item.age}</p><p>Occupation: ${item.occupation}</p>`;
-}
-
-function addInformation() {
-    const name = document.getElementById('name').value;
-    const age = document.getElementById('age').value;
-    const occupation = document.getElementById('occupation').value;
-    const pictureUrl = document.getElementById('pictureUrl').value;
-
-    // Simple validation
-    if (!name || !age || !occupation || !pictureUrl) {
-        alert('Please fill in all fields.');
-        return;
-    }
-
-    const newItem = {
-        id: data.length + 1, // You may need a more sophisticated way to generate IDs
-        name: name,
-        age: parseInt(age),
-        occupation: occupation,
-        picture: pictureUrl
-    };
-
-    data.push(newItem);
-
-    // Optionally, clear the form fields
-    document.getElementById('name').value = '';
-    document.getElementById('age').value = '';
-    document.getElementById('occupation').value = '';
-    document.getElementById('pictureUrl').value = '';
-
-    // Optionally, you can re-run the search to update the displayed results
-    search();
+    detailsDiv.innerHTML = `<p>ID: ${item.id}</p><p>Name: ${item.name}</p><p>Age: ${item.age}</p><p>Occupation: ${item.occupation}</p>`;
 }
