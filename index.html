@@ -49,7 +49,10 @@
         // Call the init function to fetch data
         init();
 
-        function searchText() {
+        async function searchText() {
+            // Wait for data to be loaded
+            await init();
+
             const searchInput = document.getElementById("searchInput").value.toLowerCase();
             const resultsList = document.getElementById("resultsList");
             const selectedText = document.getElementById("selectedText");
