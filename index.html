@@ -14,13 +14,6 @@
             display: none;
             margin-top: 20px;
         }
-        #progress-bar {
-            width: 0;
-            height: 20px;
-            background-color: #4CAF50;
-            margin-top: 10px;
-            display: none;
-        }
     </style>
 </head>
 <body>
@@ -29,8 +22,6 @@
 
     <input type="text" id="searchInput" placeholder="Search for text">
     <button onclick="searchText()">Search</button>
-
-    <div id="progress-bar"></div>
 
     <div id="result-container">
         <h2>Results</h2>
@@ -43,48 +34,17 @@
     </div>
 
     <script>
-        // Function to fetch data asynchronously with progress tracking
-        async function fetchDataWithProgress() {
-            const progressBar = document.getElementById("progress-bar");
-            progressBar.style.display = "block";
-
+        async function fetchData() {
             const response = await fetch('data.json');
-
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-
-            const contentLength = response.headers.get('content-length');
-            let loaded = 0;
-
-            const reader = response.body.getReader();
-            while (true) {
-                const { done, value } = await reader.read();
-                if (done) {
-                    break;
-                }
-
-                loaded += value.length;
-                const progress = (loaded / contentLength) * 100;
-                progressBar.style.width = progress + "%";
-            }
-
-            progressBar.style.display = "none";
-
             const data = await response.json();
             return data;
         }
 
-        // Function to initialize the data
         async function init() {
-            window.textData = await fetchDataWithProgress();
+            window.textData = await fetchData();
         }
 
-        // Call the init function to fetch data
-        init();
-
         async function searchText() {
-            // Wait for data to be loaded
             await init();
 
             const searchInput = document.getElementById("searchInput").value.toLowerCase();
