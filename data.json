@@ -3,13 +3,15 @@
         "id": 1,
         "name": "John Doe",
         "age": 25,
-        "occupation": "Engineer"
+        "occupation": "Engineer",
+        "picture": "john_doe.jpg"
     },
     {
         "id": 2,
         "name": "Jane Smith",
         "age": 30,
-        "occupation": "Designer"
+        "occupation": "Designer",
+        "picture": "jane_smith.jpg"
     }
     // Add more data as needed
 ]
