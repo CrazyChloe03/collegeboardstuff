@@ -1,9 +1,15 @@
 [
-    { "id": 1, "text": "Sample Text 1" },
-    { "id": 2, "text": "Sample Text 2" },
-    { "id": 3, "text": "Sample Text 3" },
-    { "id": 4, "text": "Sample Text 4" },
-    { "id": 5, "text": "test" },
-    { "id": 6, "text": "lol" },
+    {
+        "id": 1,
+        "name": "John Doe",
+        "age": 25,
+        "occupation": "Engineer"
+    },
+    {
+        "id": 2,
+        "name": "Jane Smith",
+        "age": 30,
+        "occupation": "Designer"
+    }
     // Add more data as needed
 ]
