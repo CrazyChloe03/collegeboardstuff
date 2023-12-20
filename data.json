@@ -3,13 +3,13 @@
         "id": 1,
         "name": "John Doe",
         "age": 25,
-        "occupation": "test"
+        "occupation": "Engineer"
     },
     {
         "id": 2,
-        "name": "fiona",
+        "name": "Jane Smith",
         "age": 30,
-        "occupation": "lol"
+        "occupation": "Designer"
     }
     // Add more data as needed
 ]
